@@ -12,4 +12,6 @@ public interface ICatalogItemRepository
     Task<Brands<CatalogBrand>> GetBrandsAsync(string brandsQueryMessage);
     Task<Types<CatalogType>> GetTypesAsync(string typeQueryMessage);
     Task<int?> Add(string name, string description, decimal price, int availableStock, int catalogBrandId, int catalogTypeId, string pictureFileName);
+    Task<int?> Remove(int id);
+    Task<int?> Update(int id, string name, string description, decimal price, int availableStock, int catalogBrandId, int catalogTypeId, string pictureFileName);
 }

@@ -29,4 +29,20 @@ public class CatalogItemController : ControllerBase
         var result = await _catalogItemService.Add(request.Name, request.Description, request.Price, request.AvailableStock, request.CatalogBrandId, request.CatalogTypeId, request.PictureFileName);
         return Ok(new AddItemResponse<int?>() { Id = result });
     }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(RemoveItemResponse<int?>), (int)HttpStatusCode.OK)]
+    public async Task<IActionResult> Remove(int id)
+    {
+        var result = await _catalogItemService.Remove(id);
+        return Ok(new RemoveItemResponse<int?>() { Id = result });
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(UpdateItemResponse<int?>), (int)HttpStatusCode.OK)]
+    public async Task<IActionResult> Update(UpdateProductRequest request)
+    {
+        var result = await _catalogItemService.Update(request.Id, request.Name, request.Description, request.Price, request.AvailableStock, request.CatalogBrandId, request.CatalogTypeId, request.PictureFileName);
+        return Ok(new UpdateItemResponse<int?>() { Id = result });
+    }
 }
