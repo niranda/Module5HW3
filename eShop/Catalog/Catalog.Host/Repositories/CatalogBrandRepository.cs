@@ -49,7 +49,7 @@ public class CatalogBrandRepository : ICatalogBrandRepository
 
     public async Task<int?> Remove(int id)
     {
-        var item = await _dbContext.CatalogItems
+        var item = await _dbContext.CatalogBrands
             .FirstOrDefaultAsync(x => x.Id == id);
 
         if (item != null)
