@@ -2,6 +2,6 @@
 {
     public class RemoveItemResponse<T>
     {
-        public T Id { get; set; } = default!;
+        public T Id { get; set; } = default(T) !;
     }
 }
