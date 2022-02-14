@@ -32,9 +32,9 @@ public class CatalogItemController : ControllerBase
 
     [HttpPost]
     [ProducesResponseType(typeof(RemoveItemResponse<int?>), (int)HttpStatusCode.OK)]
-    public async Task<IActionResult> Remove(int id)
+    public async Task<IActionResult> Remove(RemoveItemRequest request)
     {
-        var result = await _catalogItemService.Remove(id);
+        var result = await _catalogItemService.Remove(request.Id);
         return Ok(new RemoveItemResponse<int?>() { Id = result });
     }
 

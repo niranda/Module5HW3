@@ -49,10 +49,13 @@ namespace Catalog.Host.Repositories
 
         public async Task<int?> Remove(int id)
         {
-            var item = _dbContext.CatalogTypes
-                .Select(x => x.Id == id);
+            var item = await _dbContext.CatalogItems
+            .FirstOrDefaultAsync(x => x.Id == id);
 
-            _dbContext.Remove(item);
+            if (item != null)
+            {
+                _dbContext.Remove(item);
+            }
 
             await _dbContext.SaveChangesAsync();
             _logger.LogInformation("Deleted successfully");
